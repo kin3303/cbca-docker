@@ -1,19 +1,22 @@
 ## COMMAND1 to build RedHat image
-```bash
-   cd ecea-docker/build ;
-  ./build.sh -c=/tmp/build -t=cm -s=rh
+
+```console
+   $ cd ecea-docker/build
+   $ ./build.sh -c=/tmp/build -t=cm -s=rh
 ```
 
 ## COMMAND2 to build ubuntu image
-```bash
-   cd ecea-docker/build ;
-  ./build.sh -c=/tmp/build -t=cm -s=ubuntu
+
+```console
+   $ cd ecea-docker/build ;
+   $ ./build.sh -c=/tmp/build -t=cm -s=ubuntu
 ```
 
 ## COMMAND3 to build centos image
-```bash
-   cd ecea-docker/build ;
-  ./build.sh -c=/tmp/build -t=cm -s=centos
+
+```console
+   $ cd ecea-docker/build ;
+   $ ./build.sh -c=/tmp/build -t=cm -s=centos
 ```
 
 ## USAGE
