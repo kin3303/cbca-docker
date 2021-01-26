@@ -1,5 +1,5 @@
 # Cloudbees CD Accelerator Dockerize 프로젝트
- 
+
 ## 이미지 빌드
 
   1. Sharefile 에서  Container 릴리즈 gzip 파일을 다운받아 ecloud.tar.gz 를 추출
@@ -15,7 +15,7 @@
   - [*Emake*](https://github.com/kin3303/cbca-docker/tree/master/dockerfiles/agent)  
   
   
-  ## 이미지 실행
+## 이미지 실행
 
   1. Cluster Manager
   
@@ -31,41 +31,38 @@
   
   2. Agent
   
-    - 컨테이너 실행
-  
-    ```console
+  - 컨테이너 실행
+  ```console
        $ docker run --privileged=true  -i -d -t \
        -e CMHOST=<CM_IP주소>:<CM_포트> \
        -e AGENT_RESOURCE=linux  \
        --device /dev/efs \
        --net=host \
        --name=<컨테이너명> <이미지명>
-    ```
+  ```
 
-    - 실행확인  
-
-    ```console
+  - 실행확인  
+  ```console
        $ docker top  ec_agents
        $ docker logs  ec_agents
-    ```
+  ```
   
-빌드
-
+  - 빌드
   ```console
      $ docker exec  <컨테이너명> /opt/ecloud/i686_Linux/64/bin/emake -v
      $ docker exec  <컨테이너명> /opt/ecloud/i686_Linux/64/bin/emake -f /tmp/Makefile
   ```
   
-Bash 쉘로 접근
+  - Bash 쉘로 접근
 
-```console
+  ```console
      $ docker exec -it <컨테이너명> bash
   ```
   
   3. Emake
   
-  컨테이너 실행
+  - 컨테이너 실행
   
-  ```console 
+  ```console
       docker run -it -d -v /home/dev/prj:/home/dev/prj  -w /home/dev/prj --name=<컨테이너명> <이미지명>
   ```   
