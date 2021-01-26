@@ -7,7 +7,10 @@
   ```console
     $ git clone https://github.com/kin3303/cbca-docker.git
   ```
-  3. ecloud.tar.gz 파일을 원하는 타입의 Dockerfile 위치로 붙여넣기
+  3. ecloud.tar.gz 파일을 빌드하려는 타겟 도커파일이 있는 위치에 붙여넣기
+  ```console
+     $ cp ecloud.tar.gz cbca-docker/dockerfiles/agent/ubuntu/
+  ```
   
   4. 이미지를 빌드
   - [*ClusterManager*](https://github.com/kin3303/cbca-docker/blob/master/dockerfiles/cm)
