@@ -8,6 +8,6 @@
     $ git clone https://github.com/kin3303/cbca-docker.git
   ```
   3. ecloud.tar.gz 파일을 원하는 타입의 Dockerfile 위치로 붙여넣기
-    - [*ClusterManager*](https://github.com/kin3303/ecea-docker/blob/master/dockerfiles/cm)
-    - [*Agent*](https://github.com/kin3303/ecea-docker/tree/master/dockerfiles/agent)
-    - [*Emake*](https://github.com/kin3303/ecea-docker/tree/master/dockerfiles/agent)  
+  - [*ClusterManager*](https://github.com/kin3303/cbca-docker/blob/master/dockerfiles/cm)
+  - [*Agent*](https://github.com/kin3303/cbca-docker/tree/master/dockerfiles/agent)
+  - [*Emake*](https://github.com/kin3303/cbca-docker/tree/master/dockerfiles/agent)  
