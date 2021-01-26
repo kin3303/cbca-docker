@@ -37,7 +37,7 @@
   - 컨테이너 실행
   ```console
        $ docker run --privileged=true  -i -d -t \
-       -e CMHOST=<CM_IP주소>:<CM_포트> \
+       -e CM_HOST_AND_PORT=<CM_IP주소>:<CM_포트> \
        -e AGENT_RESOURCE=linux  \
        --device /dev/efs \
        --net=host \
