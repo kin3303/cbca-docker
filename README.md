@@ -17,7 +17,7 @@
   
 ## 이미지 실행
 
-  1. Cluster Manager
+### Cluster Manager
   
   ```console
      # 컨테이너 실행
@@ -29,7 +29,7 @@
      $ docker exec -it <컨테이너명> bash
   ```
   
-  2. Agent
+### Agent
   
   - 컨테이너 실행
   ```console
@@ -59,7 +59,7 @@
      $ docker exec -it <컨테이너명> bash
   ```
   
-  3. Emake
+### Emake
   
   - 컨테이너 실행
   
