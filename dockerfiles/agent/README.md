@@ -7,14 +7,14 @@
 
 ## COMMAND2 to build ubuntu image
 ```console
-   $ cd ecea-docker/build ;
+   $ cd ecea-docker/build
    $ ./build.sh -c=/tmp/test -t=agent -s=ubuntu
 ```
 
 ## COMMAND3 to build centos image
 
 ```console
-   $ cd ecea-docker/build ;
+   $ cd ecea-docker/build
    $ ./build.sh -c=/tmp/test -t=agent -s=centos
 ```
 
