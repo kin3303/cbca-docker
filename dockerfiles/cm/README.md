@@ -16,7 +16,7 @@
   ./build.sh -c=/tmp/build -t=cm -s=centos
 ```
 
-##USAGE
+## USAGE
 ```
     "Usage: ./build.sh -t=<build_target> -c=<content_folder> -s=<system_name> [-v=<build_version>]"
     "1 -t=*| --target=*          : <build_target>   - agent | cm | emake"
