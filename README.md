@@ -31,30 +31,41 @@
   
   2. Agent
   
-  ```console
-     # 컨테이너 실행
-     $ docker run --privileged=true  -i -d -t \
+    - 컨테이너 실행
+  
+    ```console
+       $ docker run --privileged=true  -i -d -t \
        -e CMHOST=<CM_IP주소>:<CM_포트> \
        -e AGENT_RESOURCE=linux  \
        --device /dev/efs \
        --net=host \
        --name=<컨테이너명> <이미지명>
-     
-     # 실행확인  
-     $ docker top  ec_agents
-     $ docker logs  ec_agents
-     
-     # 빌드
+    ```
+
+    - 실행확인  
+
+    ```console
+       $ docker top  ec_agents
+       $ docker logs  ec_agents
+    ```
+  
+빌드
+
+  ```console
      $ docker exec  <컨테이너명> /opt/ecloud/i686_Linux/64/bin/emake -v
      $ docker exec  <컨테이너명> /opt/ecloud/i686_Linux/64/bin/emake -f /tmp/Makefile
-     
-     # Bash 쉘로 접근
+  ```
+  
+Bash 쉘로 접근
+
+```console
      $ docker exec -it <컨테이너명> bash
   ```
   
   3. Emake
   
-  ```console
-     # 컨테이너 실행
+  컨테이너 실행
+  
+  ```console 
       docker run -it -d -v /home/dev/prj:/home/dev/prj  -w /home/dev/prj --name=<컨테이너명> <이미지명>
   ```   
