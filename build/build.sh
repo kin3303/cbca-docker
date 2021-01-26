@@ -175,9 +175,9 @@ else
    fi 
 fi
 
-BUILD_VERSION_DEF=10.0 
+BUILD_VERSION_DEF=11.0
 BUILD_VERSION=${BUILD_VERSION:=$BUILD_VERSION_DEF}
-IMG_NAME="${TARGET}_${BUILD_VERSION}_${SYSTEM_NAME}_alpha" 
+IMG_NAME="${TARGET}_${BUILD_VERSION}_${SYSTEM_NAME}" 
 # go to working directory to execute docker run
 cd  $BUILDDIR
 docker -v
