@@ -1,1 +1,94 @@
+#!/bin/sh
+
+# Setup configuration values.  Some of these must be provided when the
+# container is deployed; others may optionally be provided; and still others
+# are hardcoded to specific values that are used because we're running the
+# agent inside a container.
+
+# Required values.  If these are not provided it's a fatal error.
+
+CM_HOST_AND_PORT=${CM_HOST_AND_PORT:=}
+AGENT_RESOURCE=${AGENT_RESOURCE:=}
+
+if [ -z "$CM_HOST_AND_PORT" ] ; then
+    echo "CM_HOST_AND_PORT must be specified."
+    exit 1
+fi
+
+if [ -z "$AGENT_RESOURCE" ] ; then
+    echo "AGENT_RESOURCE must be specified."
+    exit 1
+fi
+
+# Optional values.  We have reasonable defaults for these if they are not
+# specified, but the user could provide different values if they wished.
+
+MAX_OPEN_FDS=${MAX_OPEN_FDS:=}
+SECURE_CONSOLE=${SECURE_CONSOLE:=n}
+TEMPDIR=${TEMPDIR:=/tmp}
+EMAKESECURITY=${EMAKESECURITY:=}
+
+# Hardcoded values.  We force these to values that make sense for a container.
+
+EFS_ID=auto
+AGENT_COUNT=1
+
+# Configuration is done.
+
+INSTDIR=/opt/ecloud
+if [ ! -d "$INSTDIR" ]; then
+    echo "ERROR: Unable to locate install dir"
+    exit 1
+fi
+BINDIR=$INSTDIR/i686_Linux/64/bin
+
+mkdir -p "$INSTDIR/i686_Linux/tmp"
+mkdir -p "$INSTDIR/i686_Linux/logs"
+
+# Set cwd, umask and PATH to known safe values.
+
+cd /var/run
+ulimit -c unlimited
+umask 022
+PATH=/usr/bin:/bin
+
+# Apply the file descriptor limit, if any.
+
+if [ -n "$MAX_OPEN_FDS" ] ; then
+    ulimit -n $MAX_OPEN_FDS
+    echo "INFO: max open fds set to $MAX_OPEN_FDS"
+fi
+
+# Start the diskcache.  NB: use a subshell to launch it, otherwise it won't
+# properly daemonize itself because it thinks it's already a daemon because
+# in a container this script is given PID 1.
+
+/bin/sh -c "echo 'INFO: auto starting diskcache...' \
+    && $BINDIR/diskcache $BINDIR/rundiskcache \
+    -logfile /var/log/diskcache.log \
+    -numagents $AGENT_COUNT \
+    -tempdir \"$TEMPDIR\""
+
+# Start the agent.  Unlike in a non-container environment, this will run the
+# agent in the foreground so the agent itself is the controlling process for
+# the container.  When the agent exits so does the container, and vice versa.
+
+echo "INFO: auto starting agent..."
+$BINDIR/ecagent $BINDIR/runagent \
+    -cm $CM_HOST_AND_PORT \
+    -secureconsole $SECURE_CONSOLE \
+    -diskcacheportfile /var/run/diskcache.port \
+    -daemon no \
+    -redirect 0 \
+    -efsid "$EFS_ID" \
+    -numagents $AGENT_COUNT \
+    -tempdir "$TEMPDIR" \
+    -emakesecurity "$EMAKESECURITY" \
+    -resource "$AGENT_RESOURCE" \
+    -trace "$TRACE"
+
+# Stop the diskcache, though we don't really care if it stops cleanly -- the
+# container is getting shutdown and will soon be thrown away anyway.
+
+/usr/bin/pkill -TERM -f -P 1 "diskcache" > /dev/null 2>&1
 
