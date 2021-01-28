@@ -11,13 +11,6 @@
    $ ./build.sh -c=/tmp/test -t=agent -s=ubuntu
 ```
 
-## COMMAND3 to build centos image
-
-```console
-   $ cd cbca-docker/build
-   $ ./build.sh -c=/tmp/test -t=agent -s=centos
-```
-
 ## COMMAND4 to rebuild RedHat image from existed ecloud.tar.gz file 
 
 ```console 
@@ -45,7 +38,7 @@
              -c=*| --content_folder=*  
              이미지 빌드시 사용할 작업 폴더 
         "4 베이스 OS 설정
-             -s=*| --system=*  (rh, centos, ubuntu 중 택1)
+             -s=*| --system=*  (rh, ubuntu 중 택1)
         "5 ecloud.tar.gz 파일 재사용
              -r | --reuse 
 ```
