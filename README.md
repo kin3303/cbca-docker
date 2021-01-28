@@ -9,7 +9,6 @@
     $ chmod +x ElectricAcceleratorFileSystem-11.1.0.88023-Linux-x86_64-Install
     $ ./ElectricAcceleratorFileSystem-11.1.0.88023-Linux-x86_64-Install
     InInstalling Linux EFS... 
-    LOFS compiled and installed successfully.                                                                                                                                 
     LOFS compiled and installed successfully.
     Installation complete.
   ``` 
