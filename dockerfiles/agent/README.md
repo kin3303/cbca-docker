@@ -11,20 +11,6 @@
    $ ./build.sh -c=/tmp/test -t=agent -s=ubuntu
 ```
 
-## COMMAND4 to rebuild RedHat image from existed ecloud.tar.gz file 
-
-```console 
-
-   $ CONTENT_FOLDER=/tmp/test
-   $ mkdir -r $CONTENT_FOLDER/agent
-   $ cp ../from/ecloud.tar.gz  to $CONTENT_FOLDER/agent 
-   $ cd cbca-docker/build && \
-  ./build.sh -t=agent \
-   -c=$CONTENT_FOLDER \
-   -s=rh \
-   -r 
-```
-
 ## USAGE
 
 ```
