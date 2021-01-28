@@ -46,16 +46,17 @@
   ```
   
 ### Agent
+   
   
   - 컨테이너 실행
   ```console
        $ docker run --privileged=true  -idt \
        -e CM_HOST_AND_PORT=<CM_IP주소>:<CM_포트> \
        -e AGENT_RESOURCE=linux  \
-       -e EFS_ID=1  \
+       [-e EFS_ID=<숫자>]  \
        --device /dev/efs \
        --net=host \
-       --hostname=test
+       [--hostname=test]
        --name=<컨테이너명> <이미지명>
   ```
 
