@@ -52,7 +52,7 @@
   ```console
        $ docker run --privileged=true  -idt \
        -e CM_HOST_AND_PORT=<CM_IP주소>:<CM_포트> \
-       -e AGENT_RESOURCE=linux  \
+       -e AGENT_RESOURCE=<CM에 생성해 놓은 리소스명>  \
        [-e EFS_ID=<숫자>]  \
        --device /dev/efs \
        --net=host \
