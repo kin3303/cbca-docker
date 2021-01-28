@@ -12,13 +12,6 @@
    $ ./build.sh -c=/tmp/build -t=cm -s=ubuntu
 ```
 
-## COMMAND3 to build centos image
-
-```console
-   $ cd cbca-docker/build ;
-   $ ./build.sh -c=/tmp/build -t=cm -s=centos
-```
-
 ## USAGE
 ```
     "Usage: ./build.sh -t=<build_target> -c=<content_folder> -s=<system_name> [-v=<build_version>]"
@@ -31,5 +24,5 @@
              -c=*| --content_folder=*  
              이미지 빌드시 사용할 작업 폴더 
         "4 베이스 OS 설정
-             -s=*| --system=*  (rh, centos, ubuntu 중 택1)
+             -s=*| --system=*  (rh, ubuntu 중 택1)
 ```
