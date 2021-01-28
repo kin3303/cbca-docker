@@ -36,13 +36,19 @@
   
   - 컨테이너 실행
   ```console
-       $ docker run --privileged=true  -i -d -t \
+       $ docker run --privileged=true  -idt \
        -e CM_HOST_AND_PORT=<CM_IP주소>:<CM_포트> \
        -e AGENT_RESOURCE=linux  \
+       -e EFS_ID=1  \
        --device /dev/efs \
        --net=host \
+       --hostname=test
        --name=<컨테이너명> <이미지명>
   ```
+
+
+docker run --privileged=true -idt -e CMHOST=*\<host\[:port\]\>* -e EFS_ID= --device /dev/efs --net=host [--name=] [--hostname=]
+
 
   - 실행확인  
   ```console
