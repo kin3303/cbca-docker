@@ -47,8 +47,9 @@
   
 ### Agent
   
-  - 11.2 버전부터는 AGENT_RESOURCE=linux 인자가 필요하지 않음
-  - hostname 은 agent 이름 등록을 위해 사용
+  1. 11.2 버전부터는 AGENT_RESOURCE=linux 인자가 필요하지 않음
+  2. hostname 은 agent 이름 등록을 위해 사용
+  3. CM_HOST_AND_PORT 은 http 포트를 넣어야 하며 https 를 사용하려면 ssl certificate 정보를 더 넣는 구조로 auto 파일 수정 필요
   
   - 컨테이너 실행
   ```console
