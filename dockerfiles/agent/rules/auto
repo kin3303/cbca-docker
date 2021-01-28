@@ -30,7 +30,7 @@ EMAKESECURITY=${EMAKESECURITY:=}
 
 # Hardcoded values.  We force these to values that make sense for a container.
 
-EFS_ID=auto
+EFS_ID=${EFS_ID:=auto}
 AGENT_COUNT=1
 
 # Configuration is done.
