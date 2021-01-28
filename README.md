@@ -46,7 +46,9 @@
   ```
   
 ### Agent
-   
+  
+  - 11.2 버전부터는 AGENT_RESOURCE=linux 인자가 필요하지 않음
+  - hostname 은 agent 이름 등록을 위해 사용
   
   - 컨테이너 실행
   ```console
@@ -56,8 +58,15 @@
        [-e EFS_ID=<숫자>]  \
        --device /dev/efs \
        --net=host \
-       [--hostname=test]
+       [--hostname=호스트명]
        --name=<컨테이너명> <이미지명>
+       
+       $ docker run --privileged=true  -idt \
+       -e CM_HOST_AND_PORT=182.162.101.234:9080 \
+       -e AGENT_RESOURCE=linux \
+       --device /dev/efs \
+       --net=host \
+       --name=agent7 agent_11.0_ubuntu  
   ```
 
 
