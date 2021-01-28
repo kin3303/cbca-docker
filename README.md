@@ -1,4 +1,18 @@
-# Cloudbees CD Accelerator Dockerize 프로젝트
+# Cloudbees Accelerator Dockerize 프로젝트
+
+## EFS 파일시스템 설치
+
+  1. EFS 파일 시스템을 호스트 머신에 설치한다.
+
+  ```console
+    $ sudo su
+    $ chmod +x ElectricAcceleratorFileSystem-11.1.0.88023-Linux-x86_64-Install
+    $ ./ElectricAcceleratorFileSystem-11.1.0.88023-Linux-x86_64-Install
+    InInstalling Linux EFS... 
+    LOFS compiled and installed successfully.                                                                                                                                 
+    LOFS compiled and installed successfully.
+    Installation complete.
+  ``` 
 
 ## 이미지 빌드
 
