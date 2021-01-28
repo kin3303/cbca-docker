@@ -42,7 +42,7 @@
       # 컨테이너 실행
      $ docker top  <컨테이너명>
      $ docker logs  <컨테이너명>
-     $ docker exec -it <컨테이너명> bash
+     $ docker exec -it <컨테이너명> /bin/bash
   ```
   
 ### Agent
@@ -89,7 +89,7 @@ docker run --privileged=true -idt -e CMHOST=*\<host\[:port\]\>* -e EFS_ID= --dev
   - Bash 쉘로 접근
 
   ```console
-     $ docker exec -it <컨테이너명> bash
+     $ docker exec -it <컨테이너명> /bin/bash
   ```
   
 ### Emake
