@@ -54,10 +54,8 @@ usage() {
     echo "    1 -t=*| --target=*          : <build_target>   - agent | cm | emake"
     echo "    2 -v=*| --version=*         : <build_version>  - in format like 10.0 - optional"
     echo "    3 -c=*| --content_folder=*  : <content_folder> - build folder to prepare content for acceletor-target docker image and build image from it"
-    echo "    4 -s=*| --system=*          : <system_name>    - rh | centos | ubuntu"
-    echo "    5 -r  | --reuse - tell to the build image  process to reuse tar archive (if it was prepared earlier) instead of creating new one - optional" 
-    echo "    6 -o  | --onlytar - build tar and exit"
-    echo "    7 -h  | --help  - print help"
+    echo "    4 -s=*| --system=*          : <system_name>    - rh | centos | ubuntu" 
+    echo "    5 -h  | --help  - print help"
     echo 
 }
 
@@ -101,7 +99,7 @@ if ! [ -d $CONTENT_FOLDER ]; then
    logMsg "Couldn't find CONTENT_FOLDER : $CONTENT_FOLDER. I'll try to create it"
 fi
 
-#config
+
 PWD=`pwd`
 TOP=".." 
 
@@ -143,42 +141,18 @@ else
       rm -rf $BUILDDIR/rules
    fi
 fi
-#the end of config section
 
-#add files to the build folder
-cp  $BUILD_SRCDIR/exclude $BUILDDIR
+
 cp  -r $BUILD_SRCDIR/rules $BUILDDIR
 chmod +x -R $BUILDDIR/rules
 cp  $DOCKER_FILE $BUILDDIR
-if ! [ -z $ONLYTAR ]; then
-   if ! [ -d /opt/ecloud  ]; then
-      printErrorMsg "Accelerator  should be installed  brefore  running $0. Can't find /opt/ecloud folder."
-   fi
-   if [ -e $BUILDDIR/ecloud.tar.gz ]; then
-      rm -f $BUILDDIR/ecloud.tar.gz
-   fi
-   tar -cvzf $BUILDDIR/ecloud.tar.gz --exclude-from=$BUILDDIR/exclude /opt/ecloud
-   echo "Look at  $BUILDDIR   for  ecloud.tar.gz"
-   exit 0
-fi
-if [ -z $REUSE ] ; then
-   if ! [ -d /opt/ecloud  ]; then
-      printErrorMsg "Accelerator  should be installed  brefore  running $0. Can't find /opt/ecloud folder."
-   fi
-   if [ -e $BUILDDIR/ecloud.tar.gz ]; then
-      rm -f $BUILDDIR/ecloud.tar.gz
-   fi
-   tar -cvzf $BUILDDIR/ecloud.tar.gz --exclude-from=$BUILDDIR/exclude /opt/ecloud
-else
-   if ! [ -e $BUILDDIR/ecloud.tar.gz ]; then
-      tar -cvzf $BUILDDIR/ecloud.tar.gz --exclude-from=$BUILDDIR/exclude /opt/ecloud
-   fi 
-fi
+cp  $BUILD_SRCDIR/ecloud.tar.gz $BUILDDIR
 
 BUILD_VERSION_DEF=11.0
 BUILD_VERSION=${BUILD_VERSION:=$BUILD_VERSION_DEF}
 IMG_NAME="${TARGET}_${BUILD_VERSION}_${SYSTEM_NAME}" 
-# go to working directory to execute docker run
+
+
 cd  $BUILDDIR
 docker -v
 if ! (docker build -t=$IMG_NAME .  ) then
