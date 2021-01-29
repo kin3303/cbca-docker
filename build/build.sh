@@ -131,9 +131,6 @@ fi
 if ! [ -d $BUILDDIR ]; then
      mkdir -p  $BUILDDIR
 else 
-   if [ -e $BUILDDIR/exclude  ]; then
-      rm -f $BUILDDIR/exclude
-   fi
    if [ -e $BUILDDIR/Dockerfile  ]; then
       rm -f $BUILDDIR/Dockerfile
    fi
