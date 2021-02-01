@@ -54,7 +54,7 @@ usage() {
     echo "    1 -t=*| --target=*          : <build_target>   - agent | cm | emake"
     echo "    2 -v=*| --version=*         : <build_version>  - in format like 10.0 - optional"
     echo "    3 -c=*| --content_folder=*  : <content_folder> - build folder to prepare content for acceletor-target docker image and build image from it"
-    echo "    4 -s=*| --system=*          : <system_name>    - rh | centos | ubuntu" 
+    echo "    4 -s=*| --system=*          : <system_name>    - rh | ubuntu" 
     echo "    5 -h  | --help  - print help"
     echo 
 }
